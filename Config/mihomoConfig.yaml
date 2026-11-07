@@ -435,6 +435,7 @@ proxies_common:
           '低倍率节点',
           '高倍率节点',
           '家宽节点',
+          'CF节点',
           '其他节点',
         ],
     }
@@ -456,6 +457,7 @@ proxies_common:
           '低倍率节点',
           '高倍率节点',
           '家宽节点',
+          'CF节点',
           '其他节点',
         ],
     }
@@ -481,6 +483,7 @@ group_filter:
       filter: '(?i)(?:[*×✕✖⨯⨉x](?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?(?:倍|[*×✕✖⨯⨉x]))',
     }
   home_filter: &home_filter { filter: '(?i)(家宽|住宅|原生\s*IP|家庭宽带|\bISP\b|\bRES\b|residential)' }
+  CF_filter: &CF_filter { filter: '(?i)(Mia)' }
   exclude_filter:
     &exclude_filter {
       exclude-filter: '(?i)(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)',
@@ -500,6 +503,7 @@ proxy-groups:
         '低倍率节点',
         '高倍率节点',
         '家宽节点',
+        'CF节点',
         '手动选择',
         '自动选择',
         '负载均衡',
@@ -687,6 +691,14 @@ proxy-groups:
     icon: 'https://fastly.jsdelivr.net/gh/AIsouler/MyClash@main/Icons/svg/Home.svg'
   - name: '家宽节点-自动选择'
     <<: [*group_common_auto, *home_filter]
+
+  - name: 'CF节点'
+    <<: [*group_common_select, *CF_filter]
+    include-all: true
+    proxies: ['CF节点-自动选择']
+    icon: 'https://v6.gh-proxy.org/https://github.com/musiyun124/mihomo/raw/refs/heads/main/icon2/Cloudflare.png'
+  - name: 'CF节点-自动选择'
+    <<: [*group_common_auto, *CF_filter]
 
   - name: '其他节点'
     <<: [*group_common_select, *exclude_filter]
