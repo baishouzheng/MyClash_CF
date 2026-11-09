@@ -696,7 +696,7 @@ proxy-groups:
     <<: [*group_common_select, *CF_filter]
     include-all: true
     proxies: ['CF节点-自动选择']
-    icon: 'https://fastly.jsdelivr.net/gh/baishouzheng/MyClash@main/Icons/png//Cloudflare.png'
+    icon: 'https://fastly.jsdelivr.net/gh/baishouzheng/MyClash_CF@main/Icons/png//Cloudflare.png'
   - name: 'CF节点-自动选择'
     <<: [*group_common_auto, *CF_filter]
 
