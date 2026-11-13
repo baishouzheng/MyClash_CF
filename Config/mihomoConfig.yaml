@@ -127,49 +127,6 @@ tun:
   auto-detect-interface: true
   dns-hijack: ['any:53', 'tcp://any:53']
 
-listeners:
-  - name: ebpf-inbound
-    type: ebpf
-    # enablement: explicit local.enable / shared.enable toggles. With no
-    # explicit enablement, local interception is enabled by default.
-    local:
-      enable: true
-      data-plane: cgroup      # cgroup (default) or tc
-      cgroup-path: ""         # absolute cgroup v2 path; empty = auto-detect
-      dns-mode: hijack        # hijack (default), respect_policy, or off
-      ipv6: true
-      bypass-private-address: true
-      bypass-exclude:
-        - 100.64.0.0/10   # keep intercepting even with bypass-private-address
-      bypass-rule-set:
-        - cn_ip
-      include-uid: []
-      include-uid-range: []
-      exclude-uid: []
-      exclude-uid-range: []
-      include-android-user: []   # Android only
-      include-package: []        # Android only
-      exclude-package: []        # Android only
-      bypass-port: []
-      bypass-port-range: []
-    shared:
-      enable: false
-      data-plane: packet_rewrite # packet_rewrite (default) or socket_assign
-      interface: [wlan0]        # downstream interfaces (required when shared enabled)
-      dns-mode: hijack
-      ipv6: true
-      bypass-private-address: true
-      bypass-exclude:
-        - 100.64.0.0/10
-      bypass-rule-set:
-        - cn_ip
-      include-source-cidr: []
-      exclude-source-cidr: []
-      include-mac-address: []
-      exclude-mac-address: []
-      bypass-port: []
-      bypass-port-range: []
-
 # --- 规则集 ---
 # Rule Provider 通用配置
 rule_providers_common:
