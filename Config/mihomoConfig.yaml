@@ -142,7 +142,7 @@ listeners:
       bypass-exclude:
         - 100.64.0.0/10   # keep intercepting even with bypass-private-address
       bypass-rule-set:
-        - geoip-cn
+        - cn_ip
       include-uid: []
       include-uid-range: []
       exclude-uid: []
@@ -162,7 +162,7 @@ listeners:
       bypass-exclude:
         - 100.64.0.0/10
       bypass-rule-set:
-        - geoip-cn
+        - cn_ip
       include-source-cidr: []
       exclude-source-cidr: []
       include-mac-address: []
@@ -178,14 +178,7 @@ rule_providers_common:
 
 # 定义 Rule Providers
 rule-providers:
-  # cnip绕过规则
-  geoip-cn:
-    <<: rule_providers_ip
-    path: ./ruleset/cnip.mrs
-    url: "https://v6.gh-proxy.org/https://github.com/samqvz/DIY-Ruleset/raw/publish/mihomo/cn_ip.mrs"
-
-  # --- 直连规则集 ---
-
+# --- 直连规则集 ---
   private:
     <<: *rule_providers_domain
     url: 'https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/private.mrs'
