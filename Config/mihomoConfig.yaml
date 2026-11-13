@@ -171,6 +171,11 @@ listeners:
       bypass-port-range: []
 
 # --- 规则集 ---
+# cnip绕过规则
+geoip-cn:
+  <<: *IPCIDR
+  path: ./rules/cnip.mrs
+  url: "https://v6.gh-proxy.org/https://github.com/samqvz/DIY-Ruleset/raw/publish/mihomo/cn_ip.mrs"
 
 # Rule Provider 通用配置
 rule_providers_common:
