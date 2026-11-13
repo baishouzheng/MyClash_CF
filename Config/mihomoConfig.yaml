@@ -171,12 +171,6 @@ listeners:
       bypass-port-range: []
 
 # --- 规则集 ---
-# cnip绕过规则
-  geoip-cn:
-    <<: *IPCIDR
-    path: ./rules/cnip.mrs
-    url: "https://v6.gh-proxy.org/https://github.com/samqvz/DIY-Ruleset/raw/publish/mihomo/cn_ip.mrs"
-
 # Rule Provider 通用配置
 rule_providers_common:
   rule_providers_domain: &rule_providers_domain { type: http, format: mrs, interval: 86400, behavior: domain }
@@ -184,6 +178,12 @@ rule_providers_common:
 
 # 定义 Rule Providers
 rule-providers:
+  # cnip绕过规则
+  geoip-cn:
+    <<: rule_providers_ip
+    path: ./ruleset/cnip.mrs
+    url: "https://v6.gh-proxy.org/https://github.com/samqvz/DIY-Ruleset/raw/publish/mihomo/cn_ip.mrs"
+
   # --- 直连规则集 ---
 
   private:
