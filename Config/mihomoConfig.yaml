@@ -142,7 +142,7 @@ listeners:
       bypass-exclude:
         - 100.64.0.0/10   # keep intercepting even with bypass-private-address
       bypass-rule-set:
-        - cn_ip
+        - geoip-cn
       include-uid: []
       include-uid-range: []
       exclude-uid: []
@@ -162,7 +162,7 @@ listeners:
       bypass-exclude:
         - 100.64.0.0/10
       bypass-rule-set:
-        - cn_ip
+        - geoip-cn
       include-source-cidr: []
       exclude-source-cidr: []
       include-mac-address: []
